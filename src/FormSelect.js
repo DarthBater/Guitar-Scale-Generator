@@ -11,6 +11,12 @@ class FormSelect extends Component{
     this.handleScaleChange = this.handleScaleChange.bind(this);
     this.handleRootChange = this.handleRootChange.bind(this);
     this.handleTriadRootChange = this.handleTriadRootChange.bind(this);
+    this.handleToggleShowTriad = this.handleToggleShowTriad.bind(this);
+  }
+
+  //onChange, call handleToggleShowTriad
+  handleToggleShowTriad(e){
+    this.props.toggleShowTriad();
   }
 
   //onChange upDate the scale to the current selector value
@@ -25,7 +31,7 @@ class FormSelect extends Component{
 
   //onChange upDate the triadRoot to the current selector value
   handleTriadRootChange(e){
-    this.props.setTriadRoot(e.target.value);
+    this.props.updateTriadNotes(e.target.value);
   }
 
   render(){
@@ -54,7 +60,7 @@ class FormSelect extends Component{
         <select onChange={this.handleRootChange}>
           {noteOptions}
         </select>
-        <select onChange={this.toggleShowTriad}>
+        <select onChange={this.handleToggleShowTriad}>
           <option value="true">View: Normal</option>
           <option value="false">View: Triad</option>
         </select>

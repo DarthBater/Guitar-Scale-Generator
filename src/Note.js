@@ -14,7 +14,7 @@ class Note extends React.Component{
   render(){
     //if the note is in the current scale, make it visible, otherwise, make its visibility hidden
     return(
-      <div className={this.props.note == this.props.root ? "note root" : "note normal"} style={{visibility: this.props.display ? 'visible' : 'hidden' }}>
+      <div className={this.props.className} style={{visibility: this.props.visible}}>
         <p>{this.props.note}</p>
       </div>
     )

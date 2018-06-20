@@ -49,8 +49,6 @@ class App extends Component {
     this.setRoot = this.setRoot.bind(this);
     this.updateNotesInScale = this.updateNotesInScale.bind(this);
     this.toggleShowTriad = this.toggleShowTriad.bind(this);
-
-    this.setTriadRoot = this.setTriadRoot.bind(this);
     this.updateTriadNotes = this.updateTriadNotes.bind(this);
   }
 
@@ -71,15 +69,13 @@ class App extends Component {
     this.updateNotesInScale(root, this.state.scale);
   }
 
-  //set the state of the triadRoot to <string>triadRoot</string>
-  setTriadRoot(root){
-    this.setState({triadRoot: root});
-    this.updateTriadNotes();
-  }
-
   //triad was changed, update 1st, 3rd, and 5th notes of triad states
-  updateTriadNotes(){
-    //TODO
+  updateTriadNotes(root){
+    this.setState({first: root});
+
+    let rootIndex = this.state.notes.indexOf(root);
+    this.setState({third: this.state.notes[(rootIndex+2) % this.state.notes.length]});
+    this.setState({fifth: this.state.notes[(rootIndex+4) % this.state.notes.length]});
   }
 
   //given the <string>root</string> and <string>scale</scale> (given)
@@ -118,7 +114,7 @@ class App extends Component {
              updateNotes={this.updateNotesInScale}
              toggleShowTriad={this.toggleShowTriad}
              notesInScale={this.state.notes}
-             setTriadRoot={this.setTriadRoot}
+             updateTriadNotes={this.updateTriadNotes}
              scales={scales}
              notes={notes}
             />
@@ -127,7 +123,10 @@ class App extends Component {
           scale={this.state.scale}
           root={this.state.root}
           notesInScale={this.state.notes}
-          triad
+          showTriad={this.state.showTriad}
+          first={this.state.first}
+          third={this.state.third}
+          fifth={this.state.fifth}
           />
        </div>
     )

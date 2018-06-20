@@ -95,6 +95,15 @@ form p{
   background: radial-gradient(#ff0000 30%, #000 100%);
 }
 
+.third{
+  background: radial-gradient(#00ff00 30%, #000 100%);
+}
+
+.fifth{
+  background: radial-gradient(#0000ff 30%, #000 100%);
+}
+
+
 .note:before{
   content: '';
   position: absolute;

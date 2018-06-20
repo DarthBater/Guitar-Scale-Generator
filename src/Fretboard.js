@@ -12,63 +12,64 @@ const aString = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"
 class Fretboard extends Component{
   constructor(props){
     super(props);
+
+    this.notePacker = this.notePacker.bind(this);
+  }
+
+  //helper function
+  //take a note and turn it into a Note component
+  notePacker(note){
+    let visible = "hidden";
+    let className = "note normal";
+
+    if(this.props.notesInScale.indexOf(note) >= 0){
+      visible = "visible";
+    }
+
+    if(this.props.showTriad){
+      if(this.props.first === note){
+        className = "note root";
+      }
+      else if(this.props.third === note){
+        className = "note third";
+      }
+      else if(this.props.fifth === note){
+        className = "note fifth";
+      }
+    }
+    else if(this.props.root === note){
+      className = "note root";
+    }
+
+
+    return(
+    <Note
+      note={note}
+      className={className}
+      visible={visible}
+      />);
   }
 
   //create an array that contains <Note> components for each note on the fretboard
   render(){
     const eStringPack = eString.map( (i) => {
-      return(
-      <Note
-        note={i}
-        scale={this.props.scale}
-        root={this.props.root}
-        notesInScale={this.props.notesInScale}
-        display={this.props.notesInScale.indexOf(i) >= 0 ? true : false}
-        />);
+        return(this.notePacker(i))
     });
 
     const bStringPack = bString.map( (i) => {
-      return(
-      <Note
-        note={i}
-        scale={this.props.scale}
-        root={this.props.root}
-        notesInScale={this.props.notesInScale}
-        display={this.props.notesInScale.indexOf(i) >= 0 ? true : false}
-        />);
-    });
+        return(this.notePacker(i))
+      });
 
     const gStringPack = gString.map( (i) => {
-      return(
-      <Note
-        note={i}
-        scale={this.props.scale}
-        root={this.props.root}
-        notesInScale={this.props.notesInScale}
-        display={this.props.notesInScale.indexOf(i) >= 0 ? true : false}
-        />);
+        return(this.notePacker(i))
     });
 
     const dStringPack = dString.map( (i) => {
-      return(
-      <Note
-        note={i}
-        scale={this.props.scale}
-        root={this.props.root}
-        notesInScale={this.props.notesInScale}
-        display={this.props.notesInScale.indexOf(i) >= 0 ? true : false}
-        />);
+        return(this.notePacker(i))
     });
 
     const aStringPack = aString.map( (i) => {
-      return(
-      <Note
-        note={i}
-        scale={this.props.scale}
-        root={this.props.root}
-        notesInScale={this.props.notesInScale}
-        display={this.props.notesInScale.indexOf(i) >= 0 ? true : false}
-        />);
+        return(this.notePacker(i))
     });
 
     return(
