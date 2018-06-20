@@ -1,28 +1,151 @@
-.App {
+body{
+  width: 100vw;
+  height: 100vh;
+  background-color: #b7b7b7;
+  background-image: url('https://mbpretinawallpapers.files.wordpress.com/2013/09/linen.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+}
+
+.hub{
+  width: 800px;
+  height: 300px;
+  background-color: #000;
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  margin: 5% auto;
   color: white;
+  background-image: url('https://www.dl.dropboxusercontent.com/s/nfx8cgb3ehqlf87/guitar.jpg?dl=0');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 1px 1px 1px 0px #000;
 }
 
-.App-title {
-  font-size: 1.5em;
+.fretboard-container{
+  position: relative;
+  background-color: #000;
+  height: 250px;
+  width: 800px;
+  text-align: center;
+  margin: 5% auto;
+  color: white;
+  background-image: url("https://www.dl.dropboxusercontent.com/s/w6v4sd0x7hiy3q9/rosewood.jpg?dl=0");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 1px 1px 3px 1px #000;
 }
 
-.App-intro {
-  font-size: large;
+h1{
+  position: relative;
+  top: 60px;
+  color: white;
+  text-shadow: 1px 1px 1px #000;
+  font-size: 65px;
+  font-weight: 100;
+  font-family: 'Alegreya Sans SC', 'serif';
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+form{
+  position: relative;
+  top: 10px;
+  width: 500px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, .6);
+  box-shadow: 1px 1px 1px 0px #000;
+}
+
+form p{
+    color: #fff;
+    font-size: 26px;
+    font-family: 'Oxygen', 'serif';
+    text-shadow: 1px 1px 1px #000;
+}
+
+.note{
+  position: relative;
+  display: inline-block;
+  width: 41.1px;
+  height: 41.1px;
+  margin: 0 10px;
+  padding: 0;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: .5px .5px 1px 0px #000;
+}
+
+  .note p{
+      position: relative;
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      top: 7px;
+      font-family: 'Alegreya Sans SC', 'serif';
+      text-shadow: 1px 1px 5px #000;
+  }
+
+.normal{
+    background: radial-gradient(#6a6a6a 0%, #000 100%);
+}
+
+.root{
+  background: radial-gradient(#ff0000 30%, #000 100%);
+}
+
+.note:before{
+  content: '';
+  position: absolute;
+  left: 0px;
+  width: 41px;
+  height: 41px;
+  border-radius: 50%;
+  background: radial-gradient(rgba(251, 251, 251, .4) 0%, rgba(0, 0, 0, .0) 100%);
+}
+
+.fret{
+  position: absolute;
+  display: inline-block;
+  height: 250px;
+  width: 2px;
+  background-color: white;
+  box-shadow: 2px 0px 2px 0px #4a4a4a;
+  opacity: .5;
+}
+
+/*
+@for $i from 0 through 12 {
+  #fret-#{$i} { left: 61 * $i#{px}; }
+}
+*/
+
+#fret-13{
+  left: 100%;
+}
+
+select{
+  background-image: url('http://i62.tinypic.com/15xvbd5.png');
+  background-repeat: no-repeat;
+  background-position: 95% 0%;
+  padding: 0 10px;
+  margin: 0 20px;
+  width: 170px;
+  height: 30px;
+  border: none;
+  display: inline-block;
+  background-color: #ffc877;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 4px 1px #6a6a6a;
+  font-family: 'Oxygen', 'serif';
+
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+}
+
+/* For IE10 */
+select::-ms-expand {
+  display: none;
 }
