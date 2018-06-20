@@ -31,16 +31,32 @@ class App extends Component {
     super(props);
 
     //create state for the current scale, the current root note,
-    //and the notes in the current scale.
+    //and the notes in the current scale. Also will need whether we
+    //should show triad or not. We need states for the 1st, 3rd, and 5th
+    //note as well to keep track of selected triads.
     this.state = {
       scale: 'Major',
       root: 'A',
-      notes: ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#']
+      notes: ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'],
+      showTriad: false,
+      triadRoot: 'A',
+      first: 'A',
+      third: 'C#',
+      fifth: 'E'
     };
 
     this.setScale = this.setScale.bind(this);
     this.setRoot = this.setRoot.bind(this);
     this.updateNotesInScale = this.updateNotesInScale.bind(this);
+    this.toggleShowTriad = this.toggleShowTriad.bind(this);
+
+    this.setTriadRoot = this.setTriadRoot.bind(this);
+    this.updateTriadNotes = this.updateTriadNotes.bind(this);
+  }
+
+  //toggle the state of toggleShowTriad
+  toggleShowTriad(){
+    this.setState({showTriad: !this.state.showTriad});
   }
 
   //set the state of the scale to <string>scale</string>
@@ -53,6 +69,17 @@ class App extends Component {
   setRoot(root){
     this.setState({root: root});
     this.updateNotesInScale(root, this.state.scale);
+  }
+
+  //set the state of the triadRoot to <string>triadRoot</string>
+  setTriadRoot(root){
+    this.setState({triadRoot: root});
+    this.updateTriadNotes();
+  }
+
+  //triad was changed, update 1st, 3rd, and 5th notes of triad states
+  updateTriadNotes(){
+    //TODO
   }
 
   //given the <string>root</string> and <string>scale</scale> (given)
@@ -81,7 +108,7 @@ class App extends Component {
 
 
   render(){
-    
+
     return(
        <div>
         <div className="hub">
@@ -89,6 +116,9 @@ class App extends Component {
           <FormSelect updateScale={this.setScale}
              updateRoot={this.setRoot}
              updateNotes={this.updateNotesInScale}
+             toggleShowTriad={this.toggleShowTriad}
+             notesInScale={this.state.notes}
+             setTriadRoot={this.setTriadRoot}
              scales={scales}
              notes={notes}
             />
@@ -97,6 +127,7 @@ class App extends Component {
           scale={this.state.scale}
           root={this.state.root}
           notesInScale={this.state.notes}
+          triad
           />
        </div>
     )
