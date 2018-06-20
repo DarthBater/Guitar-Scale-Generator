@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Note from './Note.js';
 
+//array full of chromatic notes that are sorted according to what string we are on.
 const eString = ["E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#", "E"];
 const bString = ["B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 const gString = ["G", "G#", "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G"];
@@ -13,6 +14,7 @@ class Fretboard extends Component{
     super(props);
   }
 
+  //create an array that contains <Note> components for each note on the fretboard
   render(){
     const eStringPack = eString.map( (i) => {
       return(

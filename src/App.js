@@ -4,6 +4,9 @@ import './App.css';
 import FormSelect from './FormSelect.js';
 import Fretboard from './Fretboard.js';
 
+//Object array storing our scales and the scale rules, which should
+//be an array of integers where each integer signifies the number of
+//notes between the last one.
 const scales = [{
   name: "Major",
   rule: [2, 2, 1, 2, 2, 2, 1]
@@ -18,6 +21,8 @@ const scales = [{
   rule: [2, 2, 3, 2, 3]
 }];
 
+
+//array for each note in the chromatic scale.
 const notes = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
 
 
@@ -25,6 +30,8 @@ class App extends Component {
   constructor(props){
     super(props);
 
+    //create state for the current scale, the current root note,
+    //and the notes in the current scale.
     this.state = {
       scale: 'Major',
       root: 'A',
@@ -36,16 +43,21 @@ class App extends Component {
     this.updateNotesInScale = this.updateNotesInScale.bind(this);
   }
 
+  //set the state of the scale to <string>scale</string>
   setScale(scale){
     this.setState({scale: scale});
     this.updateNotesInScale(this.state.root, scale);
   }
 
+  //set the root of the scale to <string>scale</string>
   setRoot(root){
     this.setState({root: root});
     this.updateNotesInScale(root, this.state.scale);
   }
 
+  //given the <string>root</string> and <string>scale</scale> (given)
+  //by the current state, find the proper notes in the scale and set
+  //the current state to an array of those notes.
   updateNotesInScale(root, scale){
     let rule = [];
     let result = [];
@@ -69,7 +81,7 @@ class App extends Component {
 
 
   render(){
-
+    
     return(
        <div>
         <div className="hub">
